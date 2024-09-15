@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/geofence_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Geofence Status: Unknown"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/mark_attendance_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mark Attendance" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recent Attendance"
+            android:textSize="20sp"
+            android:paddingTop="16dp" />
+        <Button
+            android:id="@+id/dashboard_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Dashboard" />
+
+
+        <ListView
+            android:id="@+id/attendance_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp" />
+
+    </LinearLayout>
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:menu="@menu/drawer_menu" />
+
+        <!-- Your Main Content -->
+        <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
