@@ -2,6 +2,7 @@ import User from "../models/user.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import Company from "../models/company.js";
+
 const createToken = (userId) => {
   const payload = { user: { id: userId } };
   return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "300d" });
@@ -49,12 +50,13 @@ export const register = async (req, res) => {
         city,
         state,
         country,
+        email,
         zipcode,
       },
       admin: user._id,
     });
     await company.save();
-    console.log("Company saved:", company);
+    
 
     const token = createToken(user._id);
 
@@ -64,6 +66,7 @@ export const register = async (req, res) => {
       company: {
         id: company._id,
         name: company.name,
+        email: company.location.email,
         location: company.location,
       },
     });
@@ -95,7 +98,7 @@ export const loginController = async (req, res, next) => {
     if (!email || !password) return next("Please Provide All Fields");
 
     // Find user by email
-    const user = await User.findOne({ email }).select("+password");
+    const user = await Company.findOne({ email }).select("+password");
     if (!user) return next("Invalid Username or Password");
 
     // Compare password

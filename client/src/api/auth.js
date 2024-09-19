@@ -54,3 +54,21 @@ export const getLocation = async (token) => {
     throw error;
   }
 };
+
+//login
+
+export const login = async (formData) => {
+  const response = await fetch(`${process.env.VITE_API_URL}/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
+
+  if (!response.ok) {
+ const errorData = await response.json(); // Get error message from response
+ throw new Error(errorData.msg || "Login failed");  }
+
+  return await response.json();
+};

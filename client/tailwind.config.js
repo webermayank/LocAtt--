@@ -10,7 +10,9 @@ module.exports = {
         raleway: ["Raleway", "sans-serif"],
       },
       colors: {
-        customBlue: "#0A2640", // Add your custom color here
+        customBlue: "#0A2640",
+        darkBlue: "#0A2640", // Add your custom color here
+        lessBlue: "#0c4c3ad5", // Add your custom color here
       },
     },
   },
